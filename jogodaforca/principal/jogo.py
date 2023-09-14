@@ -66,13 +66,12 @@ except:
 else:
     print(f'Arquivo {pasta1} Aberto com sucesso.')
 
-acertos = 0
-cont = 0
+acertos = cont = vof = v = 0
 erros = []
 confirmados = []
 escolha = []
-vof = 0
-v = 0
+
+
 enfeite('START!')
 sleep(1)
 
