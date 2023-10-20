@@ -16,7 +16,7 @@ for i in range(0,9):
             lista[i].append(aleatorio)
             lista_total.append(aleatorio)
             contador += 1
-    print(f"{alunos[i]} --> {sorted(lista[i])}")    
+    #print(f"{alunos[i]} --> {sorted(lista[i])}")    
 
 
 
@@ -34,9 +34,10 @@ for i in range(1,len(lista_total)+1):
                     lista[a].append(i)
                     lista2.append(a)
                     contador+=1
-                    print(f"n°{i}  {alunos[a]} --> {sorted(lista[a])}")
-#for i in lista:
- #   print(f"{i}")
+                   # print(f"n°{i}  {alunos[a]} --> {sorted(lista[a])}")
+for c,i in enumerate(lista):
+    print(f"{alunos[c]} --> {sorted(i)}")
+    
             
 
         
