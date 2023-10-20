@@ -1,2 +1,2 @@
 # Portifolio
- Projetos Python
+ Projetos em andamento, Em breve tera a conclusão do PortFolio.
