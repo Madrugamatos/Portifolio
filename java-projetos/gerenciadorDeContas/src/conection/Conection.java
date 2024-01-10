@@ -1,5 +1,8 @@
 package conection;
 
+import models.controls.ControleDeContas;
+import models.controls.ControlerFactory;
+
 import java.sql.*;
 
 public class Conection {
@@ -38,6 +41,17 @@ public class Conection {
         try {
             if (statement != null) {
                 statement.close();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public static void closeResultser(ResultSet resultSet){
+        try {
+            if (resultSet != null) {
+                resultSet.close();
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
