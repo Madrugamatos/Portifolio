@@ -32,8 +32,11 @@ public class Test2 {
         //ControleDeContas conn = ControlerFactory.activeConnetion();
        // Conta conta = new Conta(NomeContas.LUZ.getName(),ControleDoMenu.controlDate("11/01/2024"),100.0,"P");
 
-        List<String> lista = new ArrayList<>(Arrays.asList("",NomeContas.LUZ.getName(),
-                NomeContas.AGUA.getName(),NomeContas.FACULDADE.getName(),NomeContas.CELULAR.getName(),
+        List<String> lista = new ArrayList<>(Arrays.asList("",
+                NomeContas.LUZ.getName(),
+                NomeContas.AGUA.getName(),
+                NomeContas.FACULDADE.getName(),
+                NomeContas.CELULAR.getName(),
                 NomeContas.MEI.getName() ));
 
         List<String> menuPrincipal = new ArrayList<>(Arrays.asList(
@@ -48,6 +51,8 @@ public class Test2 {
 
 
         Integer conf;
+        String nome = "Voltar";
+        System.out.println(nome.equals("Voltar"));
 
         System.out.println(menuPrincipal.size());
         /*

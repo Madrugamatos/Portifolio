@@ -2,22 +2,26 @@ package application;
 
 import models.controls.ControleDoMenu;
 import models.entities.Conta;
-import java.text.ParseException;
-import java.util.Locale;
 
+import java.util.Locale;
+import java.util.Objects;
 
 
 public class Program {
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args)  {
 
         Locale.setDefault(Locale.US);
         int conf;
 
-        System.out.println("=== MENU ===");
+
         do{
             conf = ControleDoMenu.menuPrincipal();
 
             switch(conf){
+                case 0:
+                    System.out.println("Fim do Programa");
+                    break;
+
                 case 1:
                     ControleDoMenu.menuAdicionar();
                     break;
@@ -35,8 +39,13 @@ public class Program {
                     break;
 
                 case 5:
-                    for(Conta c : ControleDoMenu.menuFindName()){
-                        System.out.println(c);
+                    try{
+                        for(Conta c : Objects.requireNonNull(ControleDoMenu.menuFindName())){
+                            System.out.println(c);
+                        }
+                    }
+                    catch(NullPointerException e){
+                        System.out.println("busca encerrada.");
                     }
                     break;
 
@@ -45,7 +54,7 @@ public class Program {
                     break;
 
                 default:
-                    System.out.println("Fim do Programa");
+                    System.out.println("Opção Indisponivel.");
             }
         }while(conf != 0);
 
