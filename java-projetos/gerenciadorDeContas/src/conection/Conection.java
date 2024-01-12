@@ -20,8 +20,8 @@ public class Conection {
             try {
                 connection = DriverManager.getConnection(url, user, password);
 
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
+            } catch (SQLException | ExceptionInInitializerError e) {
+                throw new RuntimeException(e.getMessage());
             }
         }
         return connection;

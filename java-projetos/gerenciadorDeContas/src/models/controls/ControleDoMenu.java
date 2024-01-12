@@ -1,15 +1,11 @@
 package models.controls;
 
+import conection.Conection;
 import models.entities.Conta;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.Scanner;
-
-import static java.util.Locale.*;
+import java.util.*;
 
 public class ControleDoMenu {
 
@@ -19,6 +15,15 @@ public class ControleDoMenu {
 
     private static final Scanner sc = new Scanner(System.in);
     private static final ControleDeContas conn =  ControlerFactory.activeConnetion();
+    private static final List<String> menuPrincipalLista = new ArrayList<>(Arrays.asList(
+            "0 - Sair\n",
+            "1 - Adicionar Conta\n",
+            "2 - Atualizar Conta\n",
+            "3 - Deletar Conta\n",
+            "4 - Buscar Conta\n",
+            "5 - Buscar Contas\n",
+            "6 - Mostrar Todas as Contas\n"
+            ));
 
     public ControleDoMenu(){
         Locale.setDefault(Locale.US);
@@ -26,24 +31,43 @@ public class ControleDoMenu {
 
 
     public static Integer menuPrincipal(){
-        System.out.println("1 - Adicionar Conta\n" +
-                "2 - Atualizar Conta\n" +
-                "3 - Deletar Conta\n" +
-                "4 - Buscar Conta\n" +
-                "5 - Buscar Contas\n" +
-                "6 - Mostrar Todas as Contas\n" +
-                "7 - Sair"
-        );
 
-        Integer conf = sc.nextInt();
-        sc.nextLine();
-        return conf;
+
+
+
+
+                int conf = menuPrincipalLista.size() ;
+                do {
+
+                        try {
+                            for(String s : menuPrincipalLista) {
+                                System.out.print(s);
+                            }
+                            conf = sc.nextInt();
+                            sc.nextLine();
+
+                        }
+                        catch (InputMismatchException e) {
+                            System.out.println("Character Invalido.");
+                            sc.nextLine();
+                        }
+
+
+                }while(conf >= menuPrincipalLista.size() || conf < 0);
+                return conf;
+
+
+
+
     }
 
     public static Date controlDate(String date){
 
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+        boolean teste = false;
+
 
         try {
             Date data = sdf.parse(date);
@@ -70,8 +94,20 @@ public class ControleDoMenu {
         String nome = sc.nextLine();
         System.out.print("Date dd/mm/aaaa: ");
         Date date = ControleDoMenu.controlDate(sc.nextLine());
-        System.out.print("Valor da Conta: ");
-        Double valor = sc.nextDouble();
+
+        double valor;
+         do{
+             System.out.print("Valor da Conta: ");
+            try {
+                valor = sc.nextDouble();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Digite um valor Valido");
+                sc.nextLine();
+            }
+
+        }while(true);
+
         System.out.print("Status da Conta: ");
         char status = sc.next().charAt(0);
         System.out.println("Conta Adicionada com sucesso");
@@ -131,6 +167,10 @@ public class ControleDoMenu {
     public static void closeScanner(){
         sc.close();
         System.out.println("Scan Fechado!");
+    }
+
+    public static void closeConnection(){
+        Conection.closeConnection(conn.getConn());
     }
 
 

@@ -86,6 +86,9 @@ public class ControleDeContas {
             ps = conn.prepareStatement(
                     "DELETE FROM contas.controle WHERE Contas = ? and Datas = ? limit 1"
             );
+            if(name.equals("null")){
+                name = null;
+            }
             ps.setString(1, name);
             ps.setDate(2,new java.sql.Date(date.getTime()));
 

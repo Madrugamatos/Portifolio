@@ -4,7 +4,7 @@ import models.controls.ControleDoMenu;
 import models.entities.Conta;
 import java.text.ParseException;
 import java.util.Locale;
-import java.util.Scanner;
+
 
 
 public class Program {
@@ -47,9 +47,12 @@ public class Program {
                 default:
                     System.out.println("Fim do Programa");
             }
-        }while(conf < 7 && conf > 0);
+        }while(conf != 0);
 
 
         ControleDoMenu.closeScanner();
+        ControleDoMenu.closeConnection();
+
+
     }
 }
